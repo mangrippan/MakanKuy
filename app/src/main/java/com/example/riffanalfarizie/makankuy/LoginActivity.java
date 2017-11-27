@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void clik(View v) {
-    Intent inte = new Intent(getApplicationContext(), LoginActivity.class);
-    startActivity(inte);
-}
+        Intent inte = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(inte);
+    }
 
 }

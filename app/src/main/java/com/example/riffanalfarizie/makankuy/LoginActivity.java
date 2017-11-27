@@ -14,9 +14,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    public void clik(View v) {
-        Intent inte = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(inte);
-    }
+
 
 }

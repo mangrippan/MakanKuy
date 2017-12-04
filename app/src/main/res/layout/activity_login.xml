@@ -1,61 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="100dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingBottom="20dp"
+    android:layout_height="match_parent"
     tools:context="com.example.riffanalfarizie.makankuy.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:padding="40dp">
 
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp" />
 
+        <!--Username ET-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:paddingTop="70px">
+            android:layout_marginTop="70dp">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
+                android:id="@+id/login_username"
                 android:layout_height="wrap_content"
-
                 android:hint="@string/username" />
 
         </android.support.design.widget.TextInputLayout>
 
+        <!--Password ET-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            app:passwordToggleEnabled="true"
-            android:layout_marginTop="-100dp">
+            android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_marginTop="-100dp"
+                android:id="@+id/login_password"
                 android:layout_height="match_parent"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
 
+        <!--Button Login-->
         <Button
-            android:id="@+id/login_btn"
-            android:layout_width="291dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="40px"
-            android:layout_marginTop="70px"
-            android:text="Masuk " />
+            android:id="@+id/login_masuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/masuk" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="400dp"
+        android:gravity="center">
+        <!--TextView Belum punya-->
+        <TextView
+            android:id="@+id/tV_blm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum memiliki akun? "
+            android:fontFamily="serif"/>
+        <!--Button Daftar-->
+        <TextView
+            android:id="@+id/login_daftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daftar"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:onClick="RegisterMenu"/>
 
     </LinearLayout>
 
-</ScrollView>
+</android.support.constraint.ConstraintLayout>

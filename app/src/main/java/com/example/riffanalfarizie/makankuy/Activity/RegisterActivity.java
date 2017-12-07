@@ -1,9 +1,11 @@
-package com.example.riffanalfarizie.makankuy;
+package com.example.riffanalfarizie.makankuy.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.riffanalfarizie.makankuy.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

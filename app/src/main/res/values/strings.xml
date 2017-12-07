@@ -6,6 +6,7 @@
     <string name="blm">Belum Punya Akun?</string>
     <string name="daftar">Daftar Sekarang!</string>
     <string name="title_activity_login">Login</string>
+    <string name="action_settings">Pengaturan</string>
 
 
 </resources>

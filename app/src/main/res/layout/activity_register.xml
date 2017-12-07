@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.riffanalfarizie.makankuy.RegisterActivity">
+    tools:context="com.example.riffanalfarizie.makankuy.Activity.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,9 +16,10 @@
         <ImageView
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            app:srcCompat="@mipmap/makan"/>
 
-        <TextView
+        <!--<TextView
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:fontFamily="serif"
-            android:textStyle="bold" />
+            android:textStyle="bold" />-->
 
         <!--Email ET-->
         <android.support.design.widget.TextInputLayout
@@ -105,29 +106,24 @@
             android:layout_marginTop="20dp"
             android:text="Daftar" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="520dp"
-        android:gravity="center">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sudah punya akun? "
-            android:fontFamily="serif" />
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="80dp"/>
 
         <TextView
             android:id="@+id/tvMasuk"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="205dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
             android:text="Masuk"
             android:textStyle="bold"
             android:onClick="MenuLogin"/>
 
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>

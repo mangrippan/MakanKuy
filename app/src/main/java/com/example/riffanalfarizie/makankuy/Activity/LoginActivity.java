@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     HashMap<String,String> hashMap = new HashMap<>();
     HttpParse httpParse = new HttpParse();
     public static final String Username = "";
-    String URL = "http://192.168.0.104/makankuy/userlogin.php";
+    String URL = "http://192.168.137.1/makankuy/userlogin.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void FungsiLogin(final String user, final String pass ) {
-        class LoginClass extends AsyncTask<String, Void, String> {
+        class LoginClass extends AsyncTask<String,Void,String> {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -92,6 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                 return finalResult;
             }
         }
+        LoginClass loginClass = new LoginClass();
+        loginClass.execute(user,pass);
     }
 
     public void RegisterMenu(View v){

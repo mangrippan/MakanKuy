@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 05:45 PM
+-- Generation Time: Dec 11, 2017 at 03:27 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `nama` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama`, `password`) VALUES
+('admin', 'Novita Hasibuan', 'admin');
 
 -- --------------------------------------------------------
 
@@ -88,13 +95,21 @@ CREATE TABLE `menu` (
 --
 
 CREATE TABLE `pemesanan` (
-  `id_pemesanan` varchar(5) NOT NULL,
-  `id_konsumen` varchar(5) NOT NULL,
-  `id_restoran` varchar(5) NOT NULL,
-  `tanggal_pesan` date NOT NULL,
+  `id_konsumen` varchar(10) NOT NULL,
+  `id_restoran` varchar(15) NOT NULL,
+  `tanggal_pesan` datetime NOT NULL,
   `jumlah_pesan` int(11) NOT NULL,
-  `deposit` int(11) NOT NULL
+  `deposit` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_konsumen`, `id_restoran`, `tanggal_pesan`, `jumlah_pesan`, `deposit`, `status`) VALUES
+('abc', 'rasut', '2017-12-05 00:00:00', 2, 5000, 0),
+('abc', 'berkah', '2017-12-10 00:00:00', 10, 100000, 0);
 
 -- --------------------------------------------------------
 
@@ -130,7 +145,7 @@ CREATE TABLE `rekomendasi` (
 --
 
 CREATE TABLE `restoran` (
-  `id_restoran` varchar(5) NOT NULL,
+  `id_restoran` varchar(15) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
   `jalan` varchar(50) NOT NULL,
@@ -146,6 +161,14 @@ CREATE TABLE `restoran` (
   `latitude` double NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `restoran`
+--
+
+INSERT INTO `restoran` (`id_restoran`, `nama`, `password`, `jalan`, `kecamatan`, `detail_tempat`, `no_telp`, `rating`, `foto`, `jam_buka`, `jam_tutup`, `kapasitas`, `langtitude`, `latitude`, `status`) VALUES
+('berkah', 'Berkah', '123', 'Jalan Malabar', 'Bogor Tengah', 'Depan Pondok Malabar Indah', '-', 3, '-', '10:00:00', '23:00:00', 30, 0, 0, 0),
+('rasut', 'Rasa Utama', '123', 'Jalan Pakuan', 'Bogor Tengah', 'Depan Universitas Pakuan', '-', 3, '', '11:00:00', '22:00:00', 100, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -194,7 +217,7 @@ ALTER TABLE `menu`
 -- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  ADD PRIMARY KEY (`id_pemesanan`),
+  ADD PRIMARY KEY (`tanggal_pesan`),
   ADD KEY `id_konsumen` (`id_konsumen`),
   ADD KEY `id_restoran` (`id_restoran`);
 
@@ -221,6 +244,7 @@ ALTER TABLE `restoran`
 -- Indexes for table `topup`
 --
 ALTER TABLE `topup`
+  ADD PRIMARY KEY (`tanggal_popup`),
   ADD KEY `id_konsumen` (`id_konsumen`);
 
 --

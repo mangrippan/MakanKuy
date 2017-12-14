@@ -8,6 +8,7 @@
     <string name="title_activity_login">Login</string>
     <string name="action_settings">Pengaturan</string>
     <string name="title_activity_maps">Map</string>
+    <string name="alamat">Jalan Pajajaran No 5, Bogor Tengah</string>
 
 
 </resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.riffanalfarizie.makankuy.Activity.Detail_RestoActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/detail_logo"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:paddingTop="3dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/makan" />
+
+
+            <View
+                android:id="@+id/vew"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/detail_logo"/>
+            <RelativeLayout
+                android:id="@+id/nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/vew">
+
+                <TextView
+                    android:id="@+id/detail_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:layout_below="@id/detail_logo"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/detail_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/alamat"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/nama"
+                android:gravity="center"/>
+
+            <RelativeLayout
+                android:id="@+id/jam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_alamat"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Buka : "
+                    android:gravity="center"
+                />
+                <TextView
+                    android:id="@+id/detail_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:00"
+                    android:gravity="center"
+                    android:layout_marginLeft="80dp"
+                    android:textStyle="bold"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:gravity="center"
+                    android:layout_marginLeft="120dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/detail_tutup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22:00"
+                    android:gravity="center"
+                    android:layout_marginLeft="130dp"
+                    android:textStyle="bold"
+                />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/detail_telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0251)123123"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/jam"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/detail_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_telepon"
+                android:text="4,5"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorPrimary"/>
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+</ScrollView>

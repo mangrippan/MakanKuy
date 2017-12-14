@@ -101,4 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(register);
     }
 
+    public void detail(View v){
+        Intent det = new Intent(LoginActivity.this,Detail_RestoActivity.class);
+        startActivity(det);
+    }
+
 }

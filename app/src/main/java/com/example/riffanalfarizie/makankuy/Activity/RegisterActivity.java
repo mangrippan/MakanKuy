@@ -10,10 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.riffanalfarizie.makankuy.Helper.HttpParse;
 import com.example.riffanalfarizie.makankuy.R;
-
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -109,5 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
         Intent login = new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(login);
     }
+
+
 
 }

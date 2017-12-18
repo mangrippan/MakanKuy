@@ -64,7 +64,8 @@
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum memiliki akun? "/>
+            android:text="Belum memiliki akun?"
+            android:onClick="detail"/>
         <!--Button Daftar-->
         <TextView
             android:id="@+id/login_daftar"

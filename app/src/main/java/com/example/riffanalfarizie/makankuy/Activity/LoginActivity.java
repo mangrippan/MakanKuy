@@ -97,11 +97,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void RegisterMenu(View v){
-        Intent register = new Intent(LoginActivity.this,RegisterActivity.class);
+        Intent register = new Intent(LoginActivity.this,MapsActivity.class);
         startActivity(register);
     }
 
-
-
+    public void detail(View v){
+        Intent det = new Intent(LoginActivity.this,Detail_RestoActivity.class);
+        startActivity(det);
+    }
 
 }

@@ -9,6 +9,9 @@
     <string name="action_settings">Pengaturan</string>
     <string name="title_activity_maps">Map</string>
     <string name="alamat">Jalan Pajajaran No 5, Bogor Tengah</string>
+    <string name="pesan">Pesan Tempat</string>
+    <string name="rating">Beri Rating</string>
+    <string name="list_kat">List Kategori</string>
 
 
 </resources>

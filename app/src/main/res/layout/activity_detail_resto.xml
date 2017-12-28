@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.riffanalfarizie.makankuy.Activity.Detail_RestoActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/detail_logo"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:paddingTop="3dp"
+                android:contentDescription="@string/app_name"
+                />
+
+
+            <View
+                android:id="@+id/vew"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/detail_logo"/>
+
+            <RelativeLayout
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="23dp"
+                android:layout_centerInParent="false"
+                android:layout_below="@id/vew">
+
+                <TextView
+                    android:id="@+id/detail_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_logo"
+                    android:textSize="22dp"
+                    android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/detail_alamat"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/detail_nama"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/detail_kecamatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/detail_alamat"
+                android:gravity="left"/>
+
+            <RelativeLayout
+                android:id="@+id/jam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_kecamatan"
+                android:layout_centerInParent="false"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Operasional : "
+                    android:gravity="center"
+                />
+                <TextView
+                    android:id="@+id/detail_buka"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="120dp"
+                    android:textStyle="bold"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:gravity="center"
+                    android:layout_marginLeft="185dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/detail_tutup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="200dp"
+                    android:textStyle="bold"
+                />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/detail_telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_below="@id/jam"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/kapasitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_below="@id/detail_telepon"
+                android:text="Kapasitas :"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/detail_kapasitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_below="@id/detail_telepon"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="75dp"
+                android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/detail_kapasitas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="false"
+                    android:layout_below="@id/detail_telepon"
+                    android:layout_marginTop="5dp"
+                    android:text="Kursi"
+                    android:layout_marginLeft="105dp"/>
+
+                <TextView
+                android:id="@+id/detail_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vew"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:layout_marginRight="22dp"
+                android:background="#f7d80a"
+                android:layout_alignParentRight="true"
+                android:textColor="#ffffff"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/veww"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/desc"/>
+
+            <RelativeLayout
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/veww">
+
+                <TextView
+                    android:id="@+id/detail_tentang"
+                    android:layout_width="310dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="left"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="6dp"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/vewww"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                android:layout_below="@id/menu"/>
+
+            <Button
+                android:id="@+id/detail_getDirection"
+                android:layout_width="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:text="Get Direction"
+                android:layout_below="@id/vewww"/>
+
+
+        </RelativeLayout>
+
+
+
+
+</ScrollView>

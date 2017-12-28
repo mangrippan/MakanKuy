@@ -12,19 +12,18 @@ public class ListLocationModel {
     @SerializedName("data")
     private List<LocationModel> mData;
 
-    public ListLocationModel(List<LocationModel> mData){
+    public ListLocationModel(List<LocationModel> mData) {
         this.mData = mData;
     }
 
-    public ListLocationModel(){
-
+    public ListLocationModel() {
     }
 
-    public List<LocationModel> getmData(){
+    public List<LocationModel> getmData() {
         return mData;
     }
 
-    public void setmData(List<LocationModel> mData){
+    public void setmData(List<LocationModel> mData) {
         this.mData = mData;
     }
 }

@@ -35,7 +35,7 @@
                         <td class="center"><?php echo $new->jumlah_pesan?></td>
                         <td class="center"><?php echo $new->deposit?></td>
                         <td class="center">
-                            <a href="<?php echo base_url();?>Resto/selesai_pesan/<?php echo $new->id_konsumen."/".$new->id_restoran."/".$new->tanggal_pesan;?>" class="btn btn-success btn-flat">Selesai</a>
+                            <a href="<?php echo base_url();?>Pemesanan/selesai_pesan/<?php echo $new->id_konsumen."/".$new->id_restoran."/".$new->tanggal_pesan;?>" class="btn btn-success btn-flat">Selesai</a>
                         </td>
                     </tr>
                     <?php $no=$no+1; } ?>
@@ -45,6 +45,7 @@
           </div>
           </div>
           </div>
+        </div>
       </div> <!--div row-->
    </div><!-- div inner-->
 </div><!-- div content-->

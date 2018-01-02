@@ -39,9 +39,9 @@
 				<td><?php echo $new->jalan ?></td>
 				<td><?php echo $new->status ?></td>
 				<td>
-					<a href="<?php echo site_url();?>Admin/prosesResto/<?php echo $new->id_restoran; ?>" class="btn btn-primary" name="proses">Proses</a>
-					<a href="<?php echo site_url();?>Admin/detailResto/" class="btn btn-warning" name="lihatDetail">Lihat Detail</a>
-					<a href="<?php echo site_url();?>Admin/hapusResto/"<?php echo $new->id_restoran; ?> class="btn btn-danger" name="hapus"> Hapus</i></a>
+					<a href="<?php echo site_url();?>Resto/prosesResto/<?php echo $new->id_restoran; ?>" class="btn btn-primary" name="proses">Proses</a>
+					<a href="<?php echo site_url();?>Resto/detailResto/<?php echo $new->id_restoran; ?>" class="btn btn-warning popup-link" name="lihatDetail">Lihat Detail</a>
+					<a href="<?php echo site_url();?>Resto/hapusResto/<?php echo $new->id_restoran; ?>" class="btn btn-danger" name="hapus"> Hapus</i></a>
 				</td>
 
 		<?php $no=$no+1; } ?>

@@ -54,7 +54,10 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".Activity.Detail_RestoActivity" />
         <activity android:name=".Activity.KategoriActivity" />
-        <activity android:name=".Helper.List_KategoriActivity"></activity>
+        <activity android:name=".Activity.KategoriActivity" />
+        <activity android:name=".Helper.List_KategoriActivity" />
+        <activity android:name=".Activity.ProfileActivity" />
+        <activity android:name=".Activity.TopupActivity"></activity>
     </application>
 
 </manifest>

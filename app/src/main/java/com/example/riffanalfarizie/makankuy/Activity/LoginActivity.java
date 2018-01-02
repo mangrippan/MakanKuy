@@ -16,6 +16,7 @@ import com.example.riffanalfarizie.makankuy.Helper.ApiClient;
 import com.example.riffanalfarizie.makankuy.Helper.ApiService;
 import com.example.riffanalfarizie.makankuy.Helper.List_KategoriActivity;
 import com.example.riffanalfarizie.makankuy.Helper.MsgModel;
+import com.example.riffanalfarizie.makankuy.Helper.SessionManager;
 import com.example.riffanalfarizie.makankuy.R;
 
 import retrofit2.Call;
@@ -29,20 +30,24 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     Context context;
     ApiService apiService;
-
-
+    SessionManager session;
+    public String uname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = this;
-
+        session = new SessionManager(getApplicationContext());
 
         usernameET = (EditText) findViewById(R.id.login_username);
         passwordET = (EditText) findViewById(R.id.login_password);
         loginBtn = (Button) findViewById(R.id.login_masuk);
-
+        if (session.isLoggedIn()==true){
+            startActivity(new Intent(LoginActivity.this,MapsActivity.class));
+            finish();
+        }
+        Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = ProgressDialog.show(context, null, "Validasi User...",true,false);
         String user = usernameET.getText().toString();
         String password = passwordET.getText().toString();
-
+        uname = user;
         apiService = ApiClient.getClient().create(ApiService.class);
         Call<MsgModel> userCall = apiService.loginRequest(user,password);
         userCall.enqueue(new Callback<MsgModel>() {
@@ -77,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Log.d("OnResponse", "" + response.body().getMessage());
                 if (response.body().getSuccess() == 1){
+                    session.loginSession(uname);
                     Intent i = new Intent(context,MapsActivity.class);
                     startActivity(i);
                     finish();

@@ -88,8 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
             emailET.setError(null);
         }
 
-        if (nama.isEmpty() || nama.length() > 3) {
-            namaET.setError("at least 3 characters");
+        if (nama.isEmpty()) {
+            namaET.setError("Nama tidak boleh kosong");
             valid = false;
         } else {
             namaET.setError(null);
@@ -109,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
             passwordET.setError(null);
         }
 
-        if (nomor.isEmpty() || nomor.length() <= 12 && nomor.length() >=11) {
+        if (nomor.isEmpty()) {
             nomorET.setError("harus 12 digit");
             valid = false;
         } else {

@@ -1,9 +1,11 @@
 package com.example.riffanalfarizie.makankuy.Activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -13,7 +15,11 @@ import android.location.LocationProvider;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,6 +29,7 @@ import com.example.riffanalfarizie.makankuy.Helper.ApiService;
 import com.example.riffanalfarizie.makankuy.Helper.ListRestoranModel;
 import com.example.riffanalfarizie.makankuy.Helper.RestoranModel;
 import com.example.riffanalfarizie.makankuy.Helper.MarkerTag;
+import com.example.riffanalfarizie.makankuy.Helper.SessionManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -43,7 +50,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMyLocationButtonClickListener,
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener, GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap mMap;
@@ -59,6 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     MarkerTag markerTag = new MarkerTag();
     private Integer mId = 0;
     private Integer temp;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +117,46 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 addBoundary(location.getLatitude(),location.getLongitude());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_logout:
+                SharedPreferences preferences = getSharedPreferences(session.KEY_UNAME,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                startActivity(new Intent(MapsActivity.this,LoginActivity.class));
+                finish();
+                return true;
+            case R.id.menu_profile:
+                 Intent i = new Intent(this, ProfileActivity.class);
+                 startActivity(i);
+                return true;
+            case R.id.menu_topup:
+                Intent j = new Intent(this, TopupActivity.class);
+                startActivity(j);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        /*long id = item.getItemId();
+        if (id == R.id.menu_logout) {
+            SharedPreferences preferences = getSharedPreferences(session.KEY_UNAME,Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
+            startActivity(new Intent(MapsActivity.this,LoginActivity.class));
+            finish();
+        }
+        return false;*/
     }
 
 

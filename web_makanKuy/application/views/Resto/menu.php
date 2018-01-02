@@ -28,16 +28,14 @@
           <div class="panel panel-default">
                 <div class="panel-body">
                 <p style="text-align:center">
-                  <?php foreach ($foto_menu as $new) { var_dump($new->foto_menu);?>
-            			<a id="example5" href="<?php echo base_url();?>assets/image_upload/<?php echo $new->foto_menu?>">
-                  <img src="<?php echo base_url();?>assets/image_upload/<?php echo $new->foto_menu?>" alt="" /></a>
-
-                  <a id="example5" href="<?php echo base_url();?>assets/img/demoBig.jpg">
-                  <img src="<?php echo base_url();?>assets/img/1G.jpg" alt="" /></a>
+                  <?php foreach ($foto_menu as $new) { //var_dump($new->foto_menu);?>
+            			    <a id="example5" href="<?php echo base_url();?>assets/image_upload/<?php echo $new->foto_menu?>">
+                      <img class="framemenu" src="<?php echo base_url();?>assets/image_upload/<?php echo $new->foto_menu?>" alt="" /></a>
                 <?php } ?>
             	</p>
             	</div>
          </div>
+
     </div><!--inner-->
     </div> <!--content-->
 </div>

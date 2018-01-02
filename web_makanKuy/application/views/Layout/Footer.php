@@ -45,6 +45,10 @@
      <script>
        $(function () { formInit(); });
      </script>
+
+     <!-- UPLOAD FOTO -->
+    <script src="="<?php echo base_url();?>assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+
 </body>
 
     <!-- END BODY -->

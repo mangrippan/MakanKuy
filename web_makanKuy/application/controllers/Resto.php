@@ -2,13 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Resto extends CI_Controller {
-  //$this->load->library('session');
   public $data = array();
 
     public function __construct() {
         parent::__construct();
-        $this->load->helper(array('url','file'));
+        $this->load->helper(array('url','file','form'));
         $this->load->model('MResto');
+        $this->load->model('MPemesanan');
     }
 
     public function login(){
@@ -67,8 +67,8 @@ class Resto extends CI_Controller {
       }
 	}
   function load_header(){
-    $contents['jml_pesan'] = $this->MResto->jumlah_pesanan($this->session->userdata("resto")->id_restoran);
-    $contents['data_pesan']= $this->MResto->data_pesanan($this->session->userdata("resto")->id_restoran);
+    $contents['jml_pesan'] = $this->MPemesanan->jumlah_pesanan($this->session->userdata("resto")->id_restoran);
+    $contents['data_pesan']= $this->MPemesanan->data_pesanan($this->session->userdata("resto")->id_restoran);
     // print_r($contents);die();
     $this->load->view('Layout/Header.php',$contents);
   }
@@ -83,47 +83,12 @@ class Resto extends CI_Controller {
             redirect('Resto/v_Login');
        }
   }
-  function pemesanan($id){
-    if ($this->session->userdata('login_resto') == true) {
-        $contents['restoran'] = $this->session->userdata('resto');
-        $contents['pemesanan']=$this->MResto->pemesanan($id);
-        $this->load_header();
-        $this->load->view('Resto/daftar_pesanan', $contents);
-    }
-    else {
-        redirect('Resto/v_Login');
-   }
-  }
-  function booking($id){
-    if ($this->session->userdata('login_resto') == true) {
-        $contents['restoran'] = $this->session->userdata('resto');
-        $contents['booking']=$this->MResto->booking($id);
-        $this->load_header();
-        $this->load->view('Resto/daftar_booking', $contents);
-    }
-    else {
-        redirect('Resto/v_Login');
-   }
-  }
 
-  function confirm_pesan($id_k,$id_r, $tgl){
-     $tanggal=urldecode($tgl);
-     $this->MResto->updatePemesanan($id_k,$id_r,$tanggal);
-     $saldo_awal=$this->MResto->ambilSaldo($id_k);
-     $deposit=$this->MResto->ambilDeposit($id_k,$id_r,$tanggal);
-     //print_r($deposit);die();
-     $this->MResto->updateSaldo($id_k, $saldo_awal[0]->saldo, $deposit[0]->deposit);
-     redirect('Resto/pemesanan/'.$id_r);
-  }
-  function selesai_pesan($id_k,$id_r, $tgl){
-    $tanggal=urldecode($tgl);
-    $this->MResto->selesaiBooking($id_k,$id_r,$tanggal);
-    redirect('Resto/booking/'.$id_r);
-  }
   //PENGATURAN RESTORAN
   function setting_akun($id){
         if ($this->session->userdata('login_resto') == true) {
-            $contents['restoran'] = $this->session->userdata('resto');
+            $id=$this->session->userdata('resto')->id_restoran;
+            $contents['restoran']=$this->MResto->getResto($id);
             $this->load_header();
             $this->load->view('Resto/setting_akun',$contents);
             //print_r($contents);
@@ -149,10 +114,11 @@ class Resto extends CI_Controller {
   }
   function setting_resto($id){
         if ($this->session->userdata('login_resto') == true) {
-            $contents['restoran'] = $this->session->userdata('resto');
+            $id=$this->session->userdata('resto')->id_restoran;
+            $contents['restoran']=$this->MResto->getResto($id);
             $this->load_header();
             $this->load->view('Resto/setting_resto',$contents);
-            //print_r($contents);
+            //print_r($contents[]);
         }
         else {
             redirect('Resto/v_Login');
@@ -160,15 +126,53 @@ class Resto extends CI_Controller {
   }
   function set_resto(){
     if ($this->session->userdata('login_resto') == true) {
-      if($_POST){
-  //      $nama=$this->input->post('nama');
-    //    $password=$this->input->post('password');
-        //$result=$this->MResto->inputResto($username, $nama, $password);
-      //  print_r($nama);die();
-      }
+      $id=$this->input->post("id");
+      $data=$_POST;
+      $this->MResto->set_resto($data);
+
+      redirect('Resto/setting_resto/'.$id, 'refresh');
     }
     else {
         redirect('Resto/v_Login');
    }
   }
+//-----------------------MENU---------------------------------------
+  function menu($id){
+    if ($this->session->userdata('login_resto') == true) {
+        $this->load_header();
+        $contents['restoran'] = $this->session->userdata('resto');
+        $contents['foto_menu']= $this->MResto->ambilMenu($id);
+        $this->load->view('Resto/menu',$contents);
+        //echo "<br>";
+        //var_dump($contents['foto_menu']);die();
+    }
+    else {
+        redirect('Resto/v_Login');
+    }
+   }
+
+   public function do_upload() {
+      $config['upload_path']          = './assets/image_upload';
+      $config['allowed_types']        = 'gif|jpg|png';
+      $config['max_size']             = 100;
+      $config['max_width']            = 1024;
+      $config['max_height']           = 768;
+
+      $this->load->library('upload', $config);
+
+      if ( ! $this->upload->do_upload('tambah_menu'))
+      {
+              $error = array('error' => $this->upload->display_errors());
+              print_r($error);die();
+            //  $this->load->view('menu', $error);
+      }
+      else
+      {
+              $data = array('upload_data' => $this->upload->data());
+              $id=$this->input->post('id_resto');
+              $this->MResto->inputMenu($id, $data['upload_data']['file_name']);
+              redirect('Resto/menu/'.$id);
+      }
+   }
+
 }

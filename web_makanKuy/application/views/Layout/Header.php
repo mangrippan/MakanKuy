@@ -33,6 +33,25 @@
     <link rel="<?php echo base_url();?>stylesheet" href="assets/plugins/timepicker/css/bootstrap-timepicker.min.css" />
     <link rel="<?php echo base_url();?>stylesheet" href="assets/plugins/switch/static/stylesheets/bootstrap-switch.css" />
 
+<!-- UPLOAD FOTO -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-fileupload.min.css" />
+
+    <link href="<?php echo base_url();?>assets/plugins/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" />
+
+<!-- MENU -->
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/menu-style.css"/> -->
+    <style>
+    .framemenu{
+      width:220px;
+      height:200px;
+      float:left;
+      margin-left:5.5%;
+      margin-top:3%;
+
+      vertical-align:text-bottom;
+      text-align:center;
+    }
+    </style>
 </head>
 <!-- END HEAD -->
 <?php
@@ -83,7 +102,7 @@
                     </a>
                 </li>
                 <li class="panel ">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                    <a href="<?php echo base_url();?>Resto/menu/<?php echo $id;?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-food"> </i> Menu
 
                     </a>
@@ -96,10 +115,10 @@
                         </span>
                     </a>
                     <ul class="collapse" id="pemesanan">
-                        <li class=""><a href="<?php echo base_url();?>Resto/booking/<?php echo $id;?>"><i class="icon-angle-right"> </i> Data
+                        <li class=""><a href="<?php echo base_url();?>Pemesanan/booking/<?php echo $id;?>"><i class="icon-angle-right"> </i> Data
                           &nbsp; <span class="label label-primary"><?php echo $data_pesan; ?></span>&nbsp; </a>
                         </a></li>
-                        <li class=""><a href="<?php echo base_url();?>Resto/pemesanan/<?php echo $id;?>"><i class="icon-angle-right"></i> Konfirmasi
+                        <li class=""><a href="<?php echo base_url();?>Pemesanan/pesanan/<?php echo $id;?>"><i class="icon-angle-right"></i> Konfirmasi
                           &nbsp; <span class="label label-danger"><?php echo $jml_pesan; ?></span>&nbsp; </a>
                         </li>
                     </ul>

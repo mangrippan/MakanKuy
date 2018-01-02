@@ -12,6 +12,7 @@
     <div class="row">
 
     <form class="form-horizontal" method="post" action="<?php echo site_url();?>Resto/set_akun">
+      <?php $restoran=$restoran[0];?>
       <div class="form-group" >
           <label class="control-label col-lg-2">Username</label>
 

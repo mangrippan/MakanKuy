@@ -10,9 +10,6 @@ class Admin extends CI_Controller {
         $this->load->helper(array('url','file'));
         $this->load->model('MAdmin');
     }
-    public function pesan($tulisan){
-        $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">$tulisan</div></div>");
-    }
     public function login(){
         if ($this->session->userdata('login_admin') == true) {
             redirect('Admin');
@@ -89,58 +86,5 @@ class Admin extends CI_Controller {
 		$this->MAdmin->hapusTopup($username,$tanggal);
     redirect('Admin/userTopup');
 	}
-	public function verifikasiResto(){
-		if ($this->session->userdata('login_admin') == true) {
-            $contents['admin'] = $this->session->userdata('admin');
-            $contents['mResto']=$this->MAdmin->manageResto();
-           $this->load->view('Admin/v_verifikasiResto',$contents);
-        }
-        else {
-            redirect('Admin/login');
-        }
-	}
-	public function prosesResto($id_resto){
-		$this->MAdmin->prosesResto($id_resto);
-    redirect('Admin/verifikasiResto');
-	}
-	public function detailResto($id){//belum diverikasi
-    if ($this->session->userdata('login_admin') == true) {
-            $contents['admin'] = $this->session->userdata('admin');
-            $contents['detailResto']=$this->MAdmin->dataResto();
-            $this->load->view('Admin/v_detailResto',$contents);
-    }
-    else {
-            redirect('Admin/verifikasiResto');
-    }
-	}
-	public function hapusResto($id){ //belum diverifikasi
-		$this->MAdmin->hapusResto($id);
-        redirect('Admin/verifikasiResto');
-	}
-	public function dataResto(){ //Lihat daftar resto yang sudah diveirifikasi
-    if ($this->session->userdata('login_admin') == true) {
-            $contents['admin'] = $this->session->userdata('admin');
-            $contents['dataResto']=$this->MAdmin->dataResto();
-            $this->load->view('Admin/v_dataResto',$contents);
-    }
-    else {
-            redirect('Admin/dataResto');
-    }
-  }
-  public function infoResto($id_resto){ //sudah diverikasi
-    if ($this->session->userdata('login_admin') == true) {
-            $contents['admin'] = $this->session->userdata('admin');
-            $contents['detailResto']=$this->MAdmin->detailResto($id_resto);
-            //printr($contents['detailResto']);
-            $this->load->view('Admin/v_detailResto',$contents);
-    }
-    else {
-            redirect('Admin/dataResto');
-    }
-  }
 
-  public function deleteResto($id){//sudah diverifikasi
-    $this->MAdmin->hapusResto($id);
-    redirect('Admin/dataResto');
-  }
 }

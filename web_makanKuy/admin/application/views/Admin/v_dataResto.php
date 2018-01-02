@@ -39,8 +39,8 @@
 				<td><?php echo $new->jalan ?></td>
 				<td><?php echo $new->no_telp ?></td>
 				<td>
-					<a href="<?php echo site_url();?>Admin/infoResto/<?php echo $new->id_restoran;?>" class="btn btn-primary" name="proses">Lihat Detail</a>
-					<a href="<?php echo site_url();?>Admin/deleteResto/<?php echo $new->id_restoran;?>" class="btn btn-danger" name="hapus"> Hapus</i></a>
+					<a href="<?php echo site_url();?>Resto/infoResto/<?php echo $new->id_restoran;?>" class="btn btn-primary" name="proses">Lihat Detail</a>
+					<a href="<?php echo site_url();?>Resto/deleteResto/<?php echo $new->id_restoran;?>" class="btn btn-danger" name="hapus"> Hapus</i></a>
 				</td>
 
 		<?php $no=$no+1; } ?>

@@ -1,7 +1,6 @@
 <?php
 
 class MResto extends CI_Model {
-
     function __construct() {
         parent::__construct();
     }
@@ -11,8 +10,8 @@ class MResto extends CI_Model {
         return $this->db->get('restoran')->row();
     }
 
-    function getResto(){
-        $query=$this->db->select('*')->from('restoran')->where('id_restoran',$this->session->userdata('resto')['id_restoran'])->get();
+    function getResto($id){
+        $query=$this->db->select('*')->from('restoran')->where('id_restoran',$id)->get();
         return $query->result();
     }
 
@@ -28,56 +27,40 @@ class MResto extends CI_Model {
       $this->db->update("restoran");
     }
 
-//---------------------------------PEMESANAN------------------------------------------------------------------
-    function pemesanan($id){
-      $query=$this->db->select('*')->from('pemesanan')->where('status',0)->where('id_restoran',$id)->get();
-		  return $query->result();
-    }
-    function booking($id){
-      $query=$this->db->select('*')->from('pemesanan')->where('status',1)->where('id_restoran',$id)->get();
-      return $query->result();
-    }
-    function jumlah_pesanan($id) {
-      # code...
-      $query=$this->db->select('*')->from('pemesanan')->where('status',0)->where('id_restoran',$id)->get();
-      $jml_pesan=$query->num_rows();
-      return $jml_pesan;
-    }
-    function data_pesanan($id){
-      $query=$this->db->select('*')->from('pemesanan')->where('status',1)->where('id_restoran',$id)->get();
-      $data_pesan=$query->num_rows();//baru
-      return $data_pesan;
+    function set_resto($data){
+      //print_r($data);die();
+      $id=$data['id'];
+      $jalan=$data['jalan'];
+      $kec=$data['kec'];
+      $dt=$data['d_tmpt'];
+      $telp=$data['telp'];
+      $kap=$data['kap'];
+      $jb=$data['jam_buka'];
+      $jt=$data['jam_tutup'];
 
+      $this->db->set("jalan",$jalan);
+      $this->db->set("kecamatan", $kec);
+      $this->db->set("detail_tempat", $dt);
+      $this->db->set("no_telp", $telp);
+      $this->db->set("jam_buka", $jb);
+      $this->db->set("jam_tutup", $jt);
+      $this->db->set("kapasitas", $kap);
+
+      $this->db->where("id_restoran",$id);
+      $this->db->update("restoran");
     }
-    //update pemesanan konsumen
-    function updatePemesanan($idK, $idR, $tgl){
-        $this->db->set('status',1);
-        $this->db->where('id_konsumen', $idK);
-        $this->db->where('id_restoran', $idR);
-        $this->db->where('tanggal_pesan', $tgl);
-        $this->db->update('pemesanan');
-    }
-    function ambilSaldo($idK){
-      $query=$this->db->select('saldo')->from('konsumen')->where('id_konsumen',$idK)->get();
+    //Menu
+    function ambilMenu($id){
+      $query=$this->db->select('foto_menu')->from('menu')->where('id_restoran',$id)->get();
       return $query->result();
     }
-    function ambilDeposit($idK, $idR, $tgl){
-      $query=$this->db->select('deposit')->from('pemesanan')->where('id_konsumen',$idK)->where('id_restoran',$idR)->where('tanggal_pesan',$tgl)->get();
-      return $query->result();
-    }
-    function updateSaldo($idK, $saldo_awal, $jml){
-      $jumlah=(int)$jml; $saldo=(int)$saldo_awal;
-      $saldo_update=$saldo-$jumlah;
-      $this->db->set('saldo',$saldo_update);
-      $this->db->where('id_konsumen',$idK);
-      $this->db->update('konsumen');
-    }
-    //selesai di resto
-    function selesaiBooking($idK, $idR, $tgl){
-        $this->db->set('status',2);
-        $this->db->where('id_konsumen', $idK);
-        $this->db->where('id_restoran', $idR);
-        $this->db->where('tanggal_pesan', $tgl);
-        $this->db->update('pemesanan');
+    function inputMenu($id, $menu){
+      //  $query="INSERT INTO menu (id_restoran, foto_menu) VALUES (".$this->db->escape($id).",".$this->db->escape($menu).")";
+      $data=array(
+          'id_restoran'=> $id,
+          'foto_menu'=> $menu
+
+      );
+      $this->db->insert('menu', $data);
     }
 }

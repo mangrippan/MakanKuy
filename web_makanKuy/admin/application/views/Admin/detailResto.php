@@ -22,7 +22,7 @@
 					</tr>
 					<tr>
 						<th > Detail Tempat </th>
-						<td > <?php echo $new->detail; ?></td>
+						<td > <?php echo $new->detail_tempat; ?></td>
 					</tr>
 					<tr>
 						<th > No Telpon </th>

@@ -12,7 +12,7 @@ import java.sql.Time;
  * Created by Riffan Alfarizie on 14/12/2017.
  */
 
-public class LocationModel {
+public class RestoranModel {
     @SerializedName("id_restoran")
     private String idRestoran;
     @SerializedName("nama")
@@ -44,7 +44,7 @@ public class LocationModel {
 
 
 
-    public LocationModel(String idRestoran, String nama, String kategori, String jalan, String kecamatan, String detail_tempat, String no_telp,
+    public RestoranModel(String idRestoran, String nama, String kategori, String jalan, String kecamatan, String detail_tempat, String no_telp,
                          Float rating, String foto, String jam_buka, String jam_tutup, Integer kapasitas, String longitude, String latitude){
         this.idRestoran = idRestoran;
         this.nama = nama;
@@ -63,7 +63,7 @@ public class LocationModel {
     }
 
 
-    public LocationModel(){
+    public RestoranModel(){
 
     }
 

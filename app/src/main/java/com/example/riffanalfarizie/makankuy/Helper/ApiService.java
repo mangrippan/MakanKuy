@@ -1,9 +1,5 @@
 package com.example.riffanalfarizie.makankuy.Helper;
 
-import com.example.riffanalfarizie.makankuy.Helper.ListLocationModel;
-import com.example.riffanalfarizie.makankuy.Helper.LocationModel;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -18,6 +14,23 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     @GET("restoran.php")
-    Call<ListLocationModel> getAllLocation();
+    Call<ListRestoranModel> getAllLocation();
+
+    @FormUrlEncoded
+    @POST("lgn.php")
+    Call<MsgModel> loginRequest(
+            @Field("id_konsumen") String id_konsumen,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<MsgModel> registerRequest(
+            @Field("email") String email,
+            @Field("nama") String nama,
+            @Field("id_konsumen") String id_konsumen,
+            @Field("password") String password,
+            @Field("no_telp") String no_telp
+    );
 
 }

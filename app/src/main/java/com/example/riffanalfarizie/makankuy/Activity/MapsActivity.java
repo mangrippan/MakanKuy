@@ -1,40 +1,35 @@
 package com.example.riffanalfarizie.makankuy.Activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.riffanalfarizie.makankuy.Helper.ApiClient;
 import com.example.riffanalfarizie.makankuy.Helper.ApiService;
-import com.example.riffanalfarizie.makankuy.Helper.ListLocationModel;
-import com.example.riffanalfarizie.makankuy.Helper.LocationModel;
+import com.example.riffanalfarizie.makankuy.Helper.ListRestoranModel;
+import com.example.riffanalfarizie.makankuy.Helper.RestoranModel;
 import com.example.riffanalfarizie.makankuy.Helper.MarkerTag;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
+import com.example.riffanalfarizie.makankuy.Helper.SessionManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -55,11 +50,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMyLocationButtonClickListener,
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener, GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap mMap;
-    private List<LocationModel> mListMarker = new ArrayList<>();
+    private List<RestoranModel> mListMarker = new ArrayList<>();
     private LocationManager locationManager = null;
     private Marker currentLocationMarker = null;
     private String provider = null;
@@ -71,6 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     MarkerTag markerTag = new MarkerTag();
     private Integer mId = 0;
     private Integer temp;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +117,46 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 addBoundary(location.getLatitude(),location.getLongitude());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_logout:
+                SharedPreferences preferences = getSharedPreferences(session.KEY_UNAME,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                startActivity(new Intent(MapsActivity.this,LoginActivity.class));
+                finish();
+                return true;
+            case R.id.menu_profile:
+                 Intent i = new Intent(this, ProfileActivity.class);
+                 startActivity(i);
+                return true;
+            case R.id.menu_topup:
+                Intent j = new Intent(this, TopupActivity.class);
+                startActivity(j);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        /*long id = item.getItemId();
+        if (id == R.id.menu_logout) {
+            SharedPreferences preferences = getSharedPreferences(session.KEY_UNAME,Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
+            startActivity(new Intent(MapsActivity.this,LoginActivity.class));
+            finish();
+        }
+        return false;*/
     }
 
 
@@ -266,24 +302,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<ListLocationModel> call = apiService.getAllLocation();
-        call.enqueue(new Callback<ListLocationModel>() {
+        Call<ListRestoranModel> call = apiService.getAllLocation();
+        call.enqueue(new Callback<ListRestoranModel>() {
             @Override
-            public void onResponse(Call<ListLocationModel> call, Response<ListLocationModel> response) {
+            public void onResponse(Call<ListRestoranModel> call, Response<ListRestoranModel> response) {
                 dialog.dismiss();
                 mListMarker = response.body().getmData();
                 initMarker(mListMarker);
             }
 
             @Override
-            public void onFailure(Call<ListLocationModel> call, Throwable t) {
+            public void onFailure(Call<ListRestoranModel> call, Throwable t) {
                 dialog.dismiss();
                 Toast.makeText(MapsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void initMarker(List<LocationModel> listData){
+    private void initMarker(List<RestoranModel> listData){
         temp = 0;
         for (int i=0; i<mListMarker.size(); i++, mId++){
             //set latlng

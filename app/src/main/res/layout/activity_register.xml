@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:text="Masuk"
             android:textStyle="bold"
-            android:onClick="MenuLogin"/>
+            />
 
     </LinearLayout>
 

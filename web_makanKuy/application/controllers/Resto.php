@@ -69,15 +69,16 @@ class Resto extends CI_Controller {
   function load_header(){
     $contents['jml_pesan'] = $this->MPemesanan->jumlah_pesanan($this->session->userdata("resto")->id_restoran);
     $contents['data_pesan']= $this->MPemesanan->data_pesanan($this->session->userdata("resto")->id_restoran);
-    // print_r($contents);die();
+    //print_r($contents);die();
     $this->load->view('Layout/Header.php',$contents);
   }
 	function dashboard(){
         if ($this->session->userdata('login_resto') == true) {
-            $contents['restoran'] = $this->session->userdata('resto');
-            //$contents['validuser']=$this->MUser->validUser();
+            $contents['restoran'] = $this->MResto->getResto($this->session->userdata("resto")->id_restoran);
+            $contents['pemesanan'] = $this->MPemesanan->jumlah_booking($this->session->userdata("resto")->id_restoran);
             $this->load_header();
-            $this->load->view('Resto/dashboard');
+            $this->load->view('Resto/dashboard', $contents);
+            //var_dump($contents);
         }
         else {
             redirect('Resto/v_Login');

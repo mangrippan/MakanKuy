@@ -35,7 +35,7 @@
                         <td class="center"><?php echo $new->deposit?></td>
                         <td class="center">
                             <a href="<?php echo base_url();?>Pemesanan/confirm_pesan/<?php echo $new->id_konsumen."/".$new->id_restoran."/".$new->tanggal_pesan;?>" class="btn btn-success btn-flat">Konfirmasi</a>
-                            <a href="<?php echo base_url();?>Pemesanan/del_Pesan/" class="btn btn-danger btn-flat">Delete</a>
+                            <a href="<?php echo base_url();?>Pemesanan/del_pesan/<?php echo $new->id_konsumen."/".$new->id_restoran."/".$new->tanggal_pesan;?>" class="btn btn-danger btn-flat">Delete</a>
                         </td>
                     </tr>
                     <?php $no=$no+1; } ?>

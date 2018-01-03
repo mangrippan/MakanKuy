@@ -46,9 +46,14 @@ class Pemesanan extends CI_Controller {
      $this->MPemesanan->updatePemesanan($id_k,$id_r,$tanggal);
      $saldo_awal=$this->MPemesanan->ambilSaldo($id_k);
      $deposit=$this->MPemesanan->ambilDeposit($id_k,$id_r,$tanggal);
-     //print_r($deposit);die();
      $this->MPemesanan->updateSaldo($id_k, $saldo_awal[0]->saldo, $deposit[0]->deposit);
      redirect('Pemesanan/pesanan/'.$id_r);
+  }
+
+  function del_pesan($idK, $idR, $tgl){
+    $tanggal=urldecode($tgl);
+    $this->MPemesanan->delPemesanan($idK, $idR, $tanggal);
+    redirect('Pemesanan/pesanan/'.$idR);
   }
   function selesai_pesan($id_k,$id_r, $tgl){
     $tanggal=urldecode($tgl);

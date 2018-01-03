@@ -25,6 +25,11 @@ class MPemesanan extends CI_Model {
       return $data_pesan;
 
     }
+    function jumlah_booking($id){
+      $query=$this->db->select('sum(jumlah_pesan) as booking')->from('pemesanan')->where('status',0)->where('id_restoran',$id)->get();
+      //print_r($query);die();
+      return $query->result();
+    }
     //update pemesanan konsumen
     function updatePemesanan($idK, $idR, $tgl){
         $this->db->set('status',1);
@@ -47,6 +52,12 @@ class MPemesanan extends CI_Model {
       $this->db->set('saldo',$saldo_update);
       $this->db->where('id_konsumen',$idK);
       $this->db->update('konsumen');
+    }
+    function delPemesanan($idK, $idR, $tgl){
+      $this->db->where('id_konsumen', $idK);
+      $this->db->where('id_restoran', $idR);
+      $this->db->where('tanggal_pesan',$tgl);
+      $this->db->delete('pemesanan');
     }
     //selesai di resto
     function selesaiBooking($idK, $idR, $tgl){

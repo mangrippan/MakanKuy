@@ -20,7 +20,7 @@
 		<input type="text" name="nama" placeholder="Nama Restoran" required="required" id="nama"/>
     <input type="password" name="password" placeholder="Password" required="required" id="password" />
     <button>Sign Up</button>
-    <p class="message">Registered? <a href="<?php echo base_url();?>Resto/login"> Login</a></p>
+    <p class="message">Sudah punya akun? <a href="<?php echo base_url();?>Resto/login"> Login</a></p>
   </form>
 </div>
 

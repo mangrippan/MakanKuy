@@ -43,8 +43,8 @@
 				<td><?php echo $new->bukti ?></td>
 				<td><?php echo $new->status ?></td>
 				<td>
-					<a href="<?php echo site_url();?>Admin/updateSaldo/<?php echo $new->id_konsumen."/".$new->jumlah_topup."/".$new->tanggal_topup;?>" class="btn btn-primary" name="proses">Proses</a>
-					<a href="<?php echo site_url();?>Admin/hapusTopup/<?php echo $new->id_konsumen."/".$new->tanggal_topup;?>" class="btn btn-danger" name="hapus"> Hapus</i></a>
+					<a href="<?php echo site_url();?>Topup/updateSaldo/<?php echo $new->id_konsumen."/".$new->jumlah_topup."/".$new->tanggal_topup;?>" class="btn btn-primary" name="proses">Proses</a>
+					<a href="<?php echo site_url();?>Topup/hapusTopup/<?php echo $new->id_konsumen."/".$new->tanggal_topup;?>" class="btn btn-danger" name="hapus"> Hapus</i></a>
 				</td>
 
 		<?php $no=$no+1; } ?>
@@ -58,6 +58,4 @@
 
 </div>
 </div>
-
-
 <?php $this->load->view('Layout/Footer');?>

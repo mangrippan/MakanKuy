@@ -14,7 +14,6 @@ class MPemesanan extends CI_Model {
       return $query->result();
     }
     function jumlah_pesanan($id) {
-      # code...
       $query=$this->db->select('*')->from('pemesanan')->where('status',0)->where('id_restoran',$id)->get();
       $jml_pesan=$query->num_rows();
       return $jml_pesan;

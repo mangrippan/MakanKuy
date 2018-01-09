@@ -11,7 +11,7 @@
                 <div class="col-lg-3">
                     <h4> Tambah Menu </h4>
                 </div>
-                <?php echo form_open_multipart('Resto/do_upload');?>
+                <?php echo form_open_multipart('Menu/do_upload');?>
 
                 <div class="col-lg-1">
                       <input type="file" name="tambah_menu" />

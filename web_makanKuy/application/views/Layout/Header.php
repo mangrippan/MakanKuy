@@ -83,10 +83,11 @@
         <!-- END HEADER SECTION -->
 
         <!-- MENU LEFT SECTION -->
+
        <div id="left" >
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo base_url();?>assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo base_url();?>assets/image_upload/<?php echo $resto[0]->foto; ?>" />
                 </a>
                 <br />
                 <div class="media-body">
@@ -102,7 +103,7 @@
                     </a>
                 </li>
                 <li class="panel ">
-                    <a href="<?php echo base_url();?>Resto/menu/<?php echo $id;?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                    <a href="<?php echo base_url();?>Menu/data_menu/<?php echo $id;?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-food"> </i> Menu
 
                     </a>

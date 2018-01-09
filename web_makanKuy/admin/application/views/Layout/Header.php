@@ -2,67 +2,14 @@
 <html>
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Makan Kuy | Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Makan Kuy | Dashboard</title>
 	<link rel="shortcut icon" href="<?php echo base_url('asset/images/icon.png');?>" />
 	<link rel="stylesheet" type="text/css" media="all" href=" <?php echo base_url();?>asset/style.css" />
   <link rel="stylesheet" type="text/css" media="all" href=" <?php echo base_url();?>asset/popup.css"/>
-  <style>
-  /*style untuk popup */
-      #popup {
-      visibility: hidden;
-      opacity: 0;
-      margin-top: -200px;
-      }
-      #popup:target {
-      visibility:visible;
-      opacity: 1;
-      background-color: rgba(0,0,0,0.1);
-      position: fixed;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-      margin:0;
-      z-index: 99999999999;
-      -webkit-transition:all 1s;
-      -moz-transition:all 1s;
-      transition:all 1s;
-      }
 
-      @media (min-width: 768px){
-      .popup-container {
-      width:600px;
-      }
-      }
-      @media (max-width: 767px){
-      .popup-container {
-      width:100%;
-      }
-      }
-      .popup-container {
-      position: relative;
-      margin:7% auto;
-      padding:30px 50px;
-      background-color: #fafafa;
-      color:#33;
-      border-radius: 3px;
-      }
-
-      a.popup-close {
-      position: absolute;
-      top:3px;
-      right:3px;
-      background-color: #333;
-      padding:7px 10px;
-      font-size: 20px;
-      text-decoration: none;
-      line-height: 1;
-      color:#fff;
-      }
-  </style>
 </head>
 <body>
 <?php $query=$this->db->select('*')->from('topup')->where('status',0)->get();$topup=$query->num_rows();//baru?>
@@ -99,7 +46,7 @@
 				<li>
                     <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Management User</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="<?php echo site_url();?>Admin/userTopup">Verifikasi  Pembayaran<?php if ($topup>0){?> <span class="label label-danger pull-right"><?php echo $topup;?></span> <?php } ?></a></li>
+                        <li><a href="<?php echo site_url();?>Topup/userTopup">Verifikasi  Pembayaran<?php if ($topup>0){?> <span class="label label-danger pull-right"><?php echo $topup;?></span> <?php } ?></a></li>
                     </ul>
                 </li>
             </ul>

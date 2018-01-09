@@ -7,11 +7,11 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-danger pull-right">User</span>
-                                <h5>Pembayaran User</h5>
+                                <h5>Topup User</h5>
                             </div>
                             <div class="ibox-content">
                                 <h1 class="no-margins"><?php echo $topup;?></h1>
-                                <small>Verifikasi pembayaran user</small>
+                                <small>Verifikasi topup user</small>
                             </div>
                         </div>
                     </div>

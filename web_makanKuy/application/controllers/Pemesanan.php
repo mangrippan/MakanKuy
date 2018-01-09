@@ -9,11 +9,13 @@ class Pemesanan extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('url','file'));
         $this->load->model('MPemesanan');
+        $this->load->model('MResto');
     }
 
   function load_header(){
     $contents['jml_pesan'] = $this->MPemesanan->jumlah_pesanan($this->session->userdata("resto")->id_restoran);
     $contents['data_pesan']= $this->MPemesanan->data_pesanan($this->session->userdata("resto")->id_restoran);
+        $contents['resto']= $this->MResto->getResto($this->session->userdata("resto")->id_restoran);
     // print_r($contents);die();
     $this->load->view('Layout/Header.php',$contents);
   }

@@ -19,7 +19,7 @@
 		<input type="text" name="username" placeholder="Username" required="required" id="username"/>
     <input type="password" name="password" placeholder="Password" required="required" id="password" />
     <button>Login</button>
-    <p class="message">Not registered? <a href="<?php echo base_url();?>Resto/signup"> Create an account</a></p>
+    <p class="message">Belum punya akun? <a href="<?php echo base_url();?>Resto/signup"> Daftar Sekarang</a></p>
   </form>
 </div>
   <script  src="<?php echo site_url();?>js/index.js"></script>

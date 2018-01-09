@@ -49,18 +49,18 @@ class MResto extends CI_Model {
       $this->db->where("id_restoran",$id);
       $this->db->update("restoran");
     }
-    //Menu
-    function ambilMenu($id){
-      $query=$this->db->select('foto_menu')->from('menu')->where('id_restoran',$id)->get();
-      return $query->result();
-    }
-    function inputMenu($id, $menu){
-      //  $query="INSERT INTO menu (id_restoran, foto_menu) VALUES (".$this->db->escape($id).",".$this->db->escape($menu).")";
-      $data=array(
-          'id_restoran'=> $id,
-          'foto_menu'=> $menu
-
-      );
-      $this->db->insert('menu', $data);
-    }
+    // //Menu
+    // function ambilMenu($id){
+    //   $query=$this->db->select('foto_menu')->from('menu')->where('id_restoran',$id)->get();
+    //   return $query->result();
+    // }
+    // function inputMenu($id, $menu){
+    //   //  $query="INSERT INTO menu (id_restoran, foto_menu) VALUES (".$this->db->escape($id).",".$this->db->escape($menu).")";
+    //   $data=array(
+    //       'id_restoran'=> $id,
+    //       'foto_menu'=> $menu
+    //
+    //   );
+    //   $this->db->insert('menu', $data);
+    // }
 }

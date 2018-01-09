@@ -37,6 +37,17 @@
                     android:text="-" />
         </LinearLayout>
 
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+                <Button
+                    android:id="@+id/maps_kategori"
+                    android:layout_width="250dp"
+                    android:layout_marginLeft="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="List Kategori" />
+        </LinearLayout>-->
 
 </RelativeLayout>
 

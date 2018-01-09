@@ -76,7 +76,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
         Button buttonTambah = (Button) findViewById(R.id.maps_tambah);
         Button buttonKurang = (Button) findViewById(R.id.maps_kurang);
 
@@ -137,8 +136,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 finish();
                 return true;
             case R.id.menu_profile:
-                 Intent i = new Intent(this, ProfileActivity.class);
-                 startActivity(i);
+                Intent i = new Intent(this, ProfileActivity.class);
+                startActivity(i);
                 return true;
             case R.id.menu_topup:
                 Intent j = new Intent(this, TopupActivity.class);
@@ -147,16 +146,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             default:
                 return super.onOptionsItemSelected(item);
         }
-        /*long id = item.getItemId();
-        if (id == R.id.menu_logout) {
-            SharedPreferences preferences = getSharedPreferences(session.KEY_UNAME,Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.commit();
-            startActivity(new Intent(MapsActivity.this,LoginActivity.class));
-            finish();
-        }
-        return false;*/
     }
 
 
@@ -183,7 +172,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMyLocationButtonClick() {
-       // Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
 
@@ -247,7 +236,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
         else {
-                Log.d("Location Error", "Something went Wrong");
+            Log.d("Location Error", "Something went Wrong");
         }
     }
 
@@ -300,7 +289,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         dialog.setMessage("Menampilkan Data");;
         dialog.show();
 
-
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<ListRestoranModel> call = apiService.getAllLocation();
         call.enqueue(new Callback<ListRestoranModel>() {
@@ -349,7 +337,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         id = marker.getId();
         id = id.substring(1);
 
-
+        //get long lat user
         Location location = locationManager.getLastKnownLocation(provider);
         updateWithNewLocation(location);
         Double curLatitude= location.getLatitude();
@@ -361,6 +349,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         String m = marker.getSnippet();
         Integer mi = Integer.parseInt(m);
+        //Passing data ke activity detail
         bundle.putString("idRestoran", mListMarker.get(mi).getIdRestoran());
         bundle.putString("nama", mListMarker.get(mi).getNama());
         bundle.putString("kategori", mListMarker.get(mi).getKategori());

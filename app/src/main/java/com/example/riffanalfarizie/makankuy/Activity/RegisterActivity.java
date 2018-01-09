@@ -3,10 +3,8 @@ package com.example.riffanalfarizie.makankuy.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +13,8 @@ import android.widget.Toast;
 
 import com.example.riffanalfarizie.makankuy.Helper.ApiClient;
 import com.example.riffanalfarizie.makankuy.Helper.ApiService;
-import com.example.riffanalfarizie.makankuy.Helper.HttpParse;
 import com.example.riffanalfarizie.makankuy.Helper.MsgModel;
 import com.example.riffanalfarizie.makankuy.R;
-import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,18 +49,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void cek() {
+        //cek apakah ada kesalahan inputan
         if (validate() == false) {
             onRegisterFailed();
             return;
         }
+        //validasi register
         register();
-    }
-
-
-    public void onRegisterSuccess() {
-        registerBtn.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
     }
 
     public void onRegisterFailed() {
@@ -115,13 +106,13 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             nomorET.setError(null);
         }
-
         return valid;
     }
 
     public void register(){
         progressDialog = ProgressDialog.show(RegisterActivity.this, null, "Membuat Akun...",true,false);
 
+        //mengambil nilai inputan
         String email = emailET.getText().toString();
         String nama = namaET.getText().toString();
         String username =  usernameET.getText().toString();
@@ -136,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (response.body().getSuccess()==1){
                     Intent i = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(i);
+                    Toast.makeText(context,"" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     finish();
                 } else{
                     Toast.makeText(context,"" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -150,12 +142,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
-   /* public void MenuLogin(View v){
+    public void MenuLogin(View v){
         Intent login = new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(login);
-    }*/
-
-
+    }
 
 }

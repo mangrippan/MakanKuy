@@ -60,6 +60,10 @@ public class SessionManager {
         return user;
     }
 
+    public String getId(){
+        return sharedPreferences.getString(KEY_UNAME,"");
+    }
+
     public void logoutUser(){
         editor.clear();
         editor.commit();

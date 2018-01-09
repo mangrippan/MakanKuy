@@ -8,9 +8,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
 
-/**
- * Created by putuguna on 30/09/17.
- */
+//Log Api
 
 public class LoggingInterceptor implements Interceptor {
     @Override

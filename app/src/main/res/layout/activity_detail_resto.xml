@@ -150,6 +150,7 @@
                 android:background="#f7d80a"
                 android:layout_alignParentRight="true"
                 android:textColor="#ffffff"/>
+
             </RelativeLayout>
 
             <View
@@ -183,7 +184,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/line"
-                android:layout_below="@id/menu"/>
+                android:layout_below="@id/menu"
+                />
 
             <Button
                 android:id="@+id/detail_getDirection"
@@ -193,6 +195,18 @@
                 android:layout_height="wrap_content"
                 android:text="Get Direction"
                 android:layout_below="@id/vewww"/>
+
+            <Button
+                android:id="@+id/detail_pesan"
+                android:layout_width="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:text="Pesan Tempat"
+                android:layout_below="@id/detail_getDirection"/>
+
+
+
 
 
         </RelativeLayout>

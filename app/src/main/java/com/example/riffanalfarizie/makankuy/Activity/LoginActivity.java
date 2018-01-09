@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.riffanalfarizie.makankuy.Helper.ApiClient;
 import com.example.riffanalfarizie.makankuy.Helper.ApiService;
-import com.example.riffanalfarizie.makankuy.Helper.List_KategoriActivity;
 import com.example.riffanalfarizie.makankuy.Helper.MsgModel;
 import com.example.riffanalfarizie.makankuy.Helper.SessionManager;
 import com.example.riffanalfarizie.makankuy.R;
@@ -37,17 +36,20 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //bikin session
         context = this;
         session = new SessionManager(getApplicationContext());
 
         usernameET = (EditText) findViewById(R.id.login_username);
         passwordET = (EditText) findViewById(R.id.login_password);
         loginBtn = (Button) findViewById(R.id.login_masuk);
+
+        //cek apakah session masih ada
         if (session.isLoggedIn()==true){
             startActivity(new Intent(LoginActivity.this,MapsActivity.class));
             finish();
         }
-        Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +59,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void cek() {
+        //cek apakah ada kesalahan inputan
         if (validate() == false) {
             onLoginFailed();
             return;
         }
+        //validasi login
         login();
     }
 
@@ -73,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = ProgressDialog.show(context, null, "Validasi User...",true,false);
         String user = usernameET.getText().toString();
         String password = passwordET.getText().toString();
+
         uname = user;
         apiService = ApiClient.getClient().create(ApiService.class);
         Call<MsgModel> userCall = apiService.loginRequest(user,password);
@@ -82,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Log.d("OnResponse", "" + response.body().getMessage());
                 if (response.body().getSuccess() == 1){
+                    //menyimpan session
                     session.loginSession(uname);
                     Intent i = new Intent(context,MapsActivity.class);
                     startActivity(i);
@@ -138,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void detail(View v){
-        Intent det = new Intent(LoginActivity.this,List_KategoriActivity.class);
+        Intent det = new Intent(LoginActivity.this,KategoriActivity.class);
         startActivity(det);
     }
 

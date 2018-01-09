@@ -42,8 +42,6 @@ public class RestoranModel {
     @SerializedName("latitude")
     private String latitude;
 
-
-
     public RestoranModel(String idRestoran, String nama, String kategori, String jalan, String kecamatan, String detail_tempat, String no_telp,
                          Float rating, String foto, String jam_buka, String jam_tutup, Integer kapasitas, String longitude, String latitude){
         this.idRestoran = idRestoran;
@@ -61,7 +59,6 @@ public class RestoranModel {
         this.longitude = longitude;
         this.latitude = latitude;
     }
-
 
     public RestoranModel(){
 
